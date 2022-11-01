@@ -32,7 +32,15 @@ rm -rf feeds/kiddin9/.diy
 
 mv -f feeds/kiddin9/{r81*,igb-intel} tmp/
 
-sed -i "s/192.168.1/10.0.0/" package/feeds/kiddin9/base-files/files/bin/config_generate
+# 修改openwrt登陆地址
+sed -i "s/192.168.1/192.168.5/" package/feeds/kiddin9/base-files/files/bin/config_generate
+
+# 修改默认wifi名称
+#sed -i 's/ssid=OpenWrt/ssid=openwrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 修改默认wifi密码key为password
+#sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i '/set wireless.default_radio${devidx}.encryption=psk2/a\set wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 (
 svn export --force https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
