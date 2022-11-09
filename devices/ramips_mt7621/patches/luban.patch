@@ -3,7 +3,7 @@ new file mode 100644
 index 0000000..ed1ebed
 --- /dev/null
 +++ b/target/linux/ramips/dts/mt7621_jdcloud_luban.dts
-@@ -0,0 +1,178 @@
+@@ -0,0 +1,171 @@
 +#include "mt7621.dtsi"
 +
 +#include <dt-bindings/gpio/gpio.h>
@@ -118,13 +118,6 @@ index 0000000..ed1ebed
 +	nvmem-cells = <&macaddr_factory_3fff4>;
 +	nvmem-cell-names = "mac-address";
 +};
-+
-+&gmac1 {
-+	status = "okay";
-+	nvmem-cells = <&macaddr_factory_3fffa>;
-+	nvmem-cell-names = "mac-address";
-+};
-+
 +
 +&switch0 {
 +	ports {
