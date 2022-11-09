@@ -1,8 +1,8 @@
-diff --git a/target/linux/generic/pending-5.4/485-mtd-spi-nor-add-xmc-xm25qh128c.patch b/target/linux/generic/pending-5.4/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
+diff --git a/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch b/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
 new file mode 100644
 index 0000000..11571cc
 --- /dev/null
-+++ b/target/linux/generic/pending-5.4/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
++++ b/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
 @@ -0,0 +1,11 @@
 +--- a/drivers/mtd/spi-nor/spi-nor.c
 ++++ b/drivers/mtd/spi-nor/spi-nor.c
