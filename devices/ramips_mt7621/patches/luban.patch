@@ -1,20 +1,3 @@
-diff --git a/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch b/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
-new file mode 100644
-index 0000000..11571cc
---- /dev/null
-+++ b/target/linux/generic/pending-5.10/485-mtd-spi-nor-add-xmc-xm25qh128c.patch
-@@ -0,0 +1,11 @@
-+--- a/drivers/mtd/spi-nor/spi-nor.c
-++++ b/drivers/mtd/spi-nor/spi-nor.c
-+@@ -2566,6 +2566,7 @@ static const struct flash_info spi_nor_ids[] = {
-+ 	/* XMC (Wuhan Xinxin Semiconductor Manufacturing Corp.) */
-+ 	{ "XM25QH64A", INFO(0x207017, 0, 64 * 1024, 128, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-+ 	{ "XM25QH128A", INFO(0x207018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-++	{ "XM25QH128C", INFO(0x204018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-+ 
-+ 	/* XTX Technology (Shenzhen) Limited */
-+ 	{ "xt25f128b", INFO(0x0B4018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-+
 diff --git a/target/linux/ramips/dts/mt7621_jdcloud_luban.dts b/target/linux/ramips/dts/mt7621_jdcloud_luban.dts
 new file mode 100644
 index 0000000..ed1ebed
@@ -184,25 +167,10 @@ index 795f567..02c4da8 100644
 +  IMAGE_SIZE := 15808k
 +  DEVICE_VENDOR := jdcloud
 +  DEVICE_MODEL := Luban
-+  DEVICE_PACKAGES += kmod-mt7915e wpad-openssl uboot-envtools
++  DEVICE_PACKAGES += kmod-mt7915e uboot-envtools
 +endef
 +TARGET_DEVICES += jdcloud_luban
 +
  define Device/xzwifi_creativebox-v1
    $(Device/dsa-migration)
    IMAGE_SIZE := 32448k
-diff --git a/target/linux/ramips/mt7621/base-files/etc/board.d/02_network b/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
-index dab5312..04101fd 100644
---- a/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
-+++ b/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
-@@ -109,6 +109,10 @@ ramips_setup_interfaces()
- 		ucidef_set_interface_lan "lan1 lan2 lan3 lan4"
- 		ucidef_set_interface "qtn" ifname "eth1" protocol "static" ipaddr "1.1.1.1" netmask "255.255.255.0"
- 		;;
-+	jdcloud,luban)
-+		ucidef_add_switch "switch0" \
-+			"0:lan" "1:lan" "2:lan" "3:lan" "4:wan" "6u@eth0" "5u@eth1"
-+		;;
- 	*)
- 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
- 		;;
